@@ -1,4 +1,4 @@
-# ChamiApp
+# CookingApp
 
 A social learning platform that helps users share posts, manage learning plans, and receive notifications.
 

@@ -22,4 +22,5 @@ public class LearningPlanEnrollmentDTO {
     private EnrollmentStatus status;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+    private LocalDateTime detetedAt;
 }

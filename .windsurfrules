@@ -1,0 +1,24 @@
+Phase 1: Project Setup & Common Infrastructure
+✅ Backend (Spring Boot):
+ Set up Spring Boot project (use Spring Initializr)
+
+Dependencies: Spring Web, Spring Data JPA, Spring Security, MySQL or PostgreSQL, Lombok, JWT (for auth)
+
+ Set up database connection
+
+ Create base project structure (controllers, services, repositories, models, DTOs)
+
+ Implement JWT-based authentication & authorization
+
+ Create user model (id, username, email, password, roles, etc.)
+
+✅ Frontend (React):
+ Set up React app with Vite or CRA
+
+ Add routing (React Router)
+
+ Create Auth Context for login/logout state
+
+ Build login, signup, and protected routes
+
+ Axios setup for API calls with token handling

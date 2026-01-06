@@ -12,10 +12,9 @@
 - [Installation Guide](#installation-guide)
 - [Usage Instructions](#usage-instructions)
 - [Research Contributions](#research-contributions)
-- [Screenshots](#screenshots)
 - [Author](#author)
 
----
+
 
 ## Overview
 
@@ -43,75 +42,57 @@ This system addresses all these challenges through its intelligent, learning-bas
 
 ### Architecture Overview
 
-```
-┌─────────────────────────────────────────────────────────────────────────────────┐
-│                           🌐 Web Application Layer                              │
-│                                                                                 │
-│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐            │
-│  │   React UI      │    │ Performance     │    │ Competition     │            │
-│  │   Components    │    │ Analytics       │    │ Analysis        │            │
-│  │                 │    │ Dashboard       │    │ Dashboard       │            │
-│  └─────────────────┘    └─────────────────┘    └─────────────────┘            │
-│           │                       │                       │                      │
-│           └───────────────────────┼───────────────────────┘                      │
-│                                   ▼                                              │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                           🔗 API Gateway Layer                                  │
-│                                                                                 │
-│  ┌─────────────────────────────────────────────────────────────────────────┐    │
-│  │                    Flask REST API Server                                 │    │
-│  │                                                                         │    │
-│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐      │    │
-│  │  │   Auth      │  │ Negotiation │  │   Training  │  │ Competition │      │    │
-│  │  │   Service   │  │   Service   │  │   Service   │  │   Service   │      │    │
-│  │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘      │    │
-│  └─────────────────────────────────────────────────────────────────────────┘    │
-│                                   │                                              │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                           🧠 Business Logic Layer                               │
-│                                                                                 │
-│  ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐            │
-│  │ Negotiation     │    │ Coalition       │    │ Trust &         │            │
-│  │ Service         │    │ Manager         │    │ Fairness        │            │
-│  │                 │    │                 │    │ Checker         │            │
-│  └─────────────────┘    └─────────────────┘    └─────────────────┘            │
-│                                   │                       │                      │
-│                                   ▼                       ▼                      │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                           🤖 AI/ML Core Layer                                    │
-│                                                                                 │
-│  ┌─────────────────────────────────────────────────────────────────────────┐    │
-│  │                    Reinforcement Learning Engine                        │    │
-│  │                                                                         │    │
-│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐      │    │
-│  │  │   Buyer     │  │   Seller    │  │   Market    │  │   Training  │      │    │
-│  │  │   Agent     │  │   Agents    │  │ Environment │  │   Engine    │      │    │
-│  │  │  (PyTorch)  │  │ (Rule-based)│  │             │  │             │      │    │
-│  │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘      │    │
-│  └─────────────────────────────────────────────────────────────────────────┘    │
-│                                   │                                              │
-├─────────────────────────────────────────────────────────────────────────────────┤
-│                           💾 Data Persistence Layer                             │
-│                                                                                 │
-│  ┌─────────────────────────────────────────────────────────────────────────┐    │
-│  │                       PostgreSQL Database                               │    │
-│  │                                                                         │    │
-│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐      │    │
-│  │  │    Users    │  │  Products   │  │Negotiations │  │    Deals    │      │    │
-│  │  │             │  │             │  │             │  │             │      │    │
-│  │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘      │    │
-│  │                                                                         │    │
-│  │  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐  ┌─────────────┐      │    │
-│  │  │   Ratings   │  │   Models    │  │   Logs      │  │   Metrics   │      │    │
-│  │  │             │  │ (Weights)   │  │             │  │             │      │    │
-│  │  └─────────────┘  └─────────────┘  └─────────────┘  └─────────────┘      │    │
-│  └─────────────────────────────────────────────────────────────────────────┘    │
-└─────────────────────────────────────────────────────────────────────────────────┘
-```
+
+┌──────────────────────────────────────────────┐
+│ 🌐 Web Application Layer                     │
+│                                              │
+│  • React UI                                  │
+│  • Performance Dashboard                     │
+│  • Competition Analysis Dashboard            │
+└───────────────────────────▲──────────────────┘
+                            │ REST
+┌───────────────────────────┴──────────────────┐
+│ 🔗 API Gateway Layer                         │
+│                                              │
+│  Flask REST API                              │
+│  • Authentication Service                    │
+│  • Negotiation API                           │
+│  • Training API                              │
+│  • Competition API                           │
+└───────────────────────────▲──────────────────┘
+                            │ Calls
+┌───────────────────────────┴──────────────────┐
+│ 🧠 Business Logic Layer                      │
+│                                              │
+│  • Negotiation Service                       │
+│  • Coalition Manager                         │
+│  • Trust & Fairness Checker                  │
+└───────────────────────────▲──────────────────┘
+                            │ State / Rewards
+┌───────────────────────────┴──────────────────┐
+│ 🤖 AI / ML Core Layer                        │
+│                                              │
+│  Reinforcement Learning Engine               │
+│  • Buyer Agent (PyTorch)                     │
+│  • Seller Agents (Rule-based)                │
+│  • Market Environment                        │
+│  • Training Engine                           │
+└───────────────────────────▲──────────────────┘
+                            │ Read / Write
+┌───────────────────────────┴──────────────────┐
+│ 💾 Data Persistence Layer                    │
+│                                              │
+│  PostgreSQL                                  │
+│  • Users, Products                           │
+│  • Negotiations, Deals                       │
+│  • Ratings, Metrics                          │
+│  • Models (weights), Logs                    │
+└──────────────────────────────────────────────┘
+
 
 ### 🔄 Data Flow Architecture
 
-```
+
 ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
 │   User      │───►│   React     │───►│   Flask     │───►│   RL Agent  │
 │   Browser   │    │   Frontend  │    │   Backend   │    │   Engine    │
@@ -126,74 +107,74 @@ This system addresses all these challenges through its intelligent, learning-bas
 │   Updates   │    │   Response  │    │   Logic     │    │   Decisions │
 │   (WebSocket)│   │   (JSON)    │    │   Processing│   │   (Actions) │
 └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
-```
+
 
 ### 🎯 Component Interactions
 
-```
+
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                          NEGOTIATION WORKFLOW                                  │
+│                          NEGOTIATION WORKFLOW                                   │
 │                                                                                 │
-│  1. User Request → React UI → Flask API → Negotiation Service                  │
-│  2. Service queries available sellers from PostgreSQL                          │
-│  3. RL Agent analyzes market conditions and seller data                        │
-│  4. Agent generates negotiation strategy (price, quantity, timing)             │
+│  1. User Request → React UI → Flask API → Negotiation Service                   │
+│  2. Service queries available sellers from PostgreSQL                           │
+│  3. RL Agent analyzes market conditions and seller data                         │
+│  4. Agent generates negotiation strategy (price, quantity, timing)              │
 │  5. Service simulates multi-round negotiations with seller agents               │
-│  6. Results stored in database, real-time updates via WebSocket               │
-│  7. User reviews deal, provides feedback → Trust scores updated                │
-│  8. Model learns from outcomes (if training enabled)                          │
+│  6. Results stored in database, real-time updates via WebSocket                 │
+│  7. User reviews deal, provides feedback → Trust scores updated                 │
+│  8. Model learns from outcomes (if training enabled)                            │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
 
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                          ANALYTICS WORKFLOW                                    │
+│                          ANALYTICS WORKFLOW                                     │
 │                                                                                 │
-│  1. Performance Analytics:                                                    │
-│     - Query training metrics from database                                     │
-│     - Calculate success rates, rewards, savings trends                        │
-│     - Generate time-series data for charts                                   │
+│  1. Performance Analytics:                                                      │
+│     - Query training metrics from database                                      │
+│     - Calculate success rates, rewards, savings trends                          │
+│     - Generate time-series data for charts                                      │
 │                                                                                 │
-│  2. Competition Analysis:                                                      │
-│     - Query seller performance data                                            │
-│     - Calculate market share, win rates, revenue rankings                     │
-│     - Generate competitive insights and correlations                          │
+│  2. Competition Analysis:                                                       │
+│     - Query seller performance data                                             │
+│     - Calculate market share, win rates, revenue rankings                       │
+│     - Generate competitive insights and correlations                            │
 │                                                                                 │
-│  3. Real-time Updates:                                                         │
-│     - WebSocket connections push live negotiation data                         │
-│     - Frontend updates charts and metrics in real-time                        │
+│  3. Real-time Updates:                                                          │
+│     - WebSocket connections push live negotiation data                          │
+│     - Frontend updates charts and metrics in real-time                          │
 │                                                                                 │
 └─────────────────────────────────────────────────────────────────────────────────┘
-```
 
----
+
+
 
 ## 🎯 Research Methodology
 
 ### 📚 Theoretical Framework
 
-This system implements a **Multi-Agent Reinforcement Learning (MARL)** approach combined with **Game Theory** principles for autonomous procurement negotiations. The methodology integrates several well-established AI techniques:
+This system implements a Multi-Agent Reinforcement Learning (MARL)** approach combined with Game Theory principles for autonomous procurement negotiations. The methodology integrates several well-established AI techniques:
 
-#### **1. Reinforcement Learning Foundation**
-- **Algorithm**: Deep Q-Network (DQN) with experience replay
-- **State Space**: Market conditions, seller data, negotiation history
-- **Action Space**: Price offers, quantity requests, seller selection
-- **Reward Function**: Cost savings + trust score - negotiation time
+1. Reinforcement Learning Foundation**
+- Algorithm: Deep Q-Network (DQN) with experience replay
+- State Space: Market conditions, seller data, negotiation history
+- Action Space: Price offers, quantity requests, seller selection
+- Reward Function: Cost savings + trust score - negotiation time
 
-#### **2. Game Theory Integration**
-- **Multi-Agent Competition**: Sellers compete for buyer's business
-- **Nash Equilibrium**: System converges to optimal pricing strategies
-- **Coalition Formation**: Multiple sellers combine to meet demand
-- **Fair Market Dynamics**: Prevents price gouging and collusion
+2. Game Theory Integration
+- Multi-Agent Competition: Sellers compete for buyer's business
+- Nash Equilibrium: System converges to optimal pricing strategies
+- Coalition Formation: Multiple sellers combine to meet demand
+- Fair Market Dynamics: Prevents price gouging and collusion
 
-#### **3. Trust-Based Decision Making**
-- **Reputation System**: Historical performance tracking
-- **Dynamic Trust Scoring**: Weighted average of ratings and outcomes
-- **Risk Assessment**: Probability-based success predictions
-- **Learning from Feedback**: Trust scores update with each interaction
+3. Trust-Based Decision Making
+- Reputation System: Historical performance tracking
+- Dynamic Trust Scoring: Weighted average of ratings and outcomes
+- Risk Assessment: Probability-based success predictions
+- Learning from Feedback: Trust scores update with each interaction
 
 ### 🧪 Experimental Design
 
-#### **Phase 1: Agent Training**
+#### Phase 1: Agent Training
 ```python
 Training Protocol:
 1. Initialize DQN with random weights
@@ -204,7 +185,7 @@ Training Protocol:
 6. Save best performing model weights
 ```
 
-#### **Phase 2: Performance Evaluation**
+#### Phase 2: Performance Evaluation
 ```python
 Evaluation Metrics:
 - Success Rate: % of negotiations achieving desired quantity
@@ -214,7 +195,7 @@ Evaluation Metrics:
 - Coalition Efficiency: Multi-seller vs. single-seller deals
 ```
 
-#### **Phase 3: Real-World Validation**
+#### Phase 3: Real-World Validation
 ```python
 Validation Steps:
 1. Deploy trained model in production environment
@@ -226,13 +207,13 @@ Validation Steps:
 
 ### 📊 Data Collection & Analysis
 
-#### **Training Data Generation**
-- **Synthetic Market Data**: 1,000+ simulated sellers with varied pricing
-- **Historical Negotiations**: Past deal outcomes and pricing patterns
-- **User Behavior Data**: Budget constraints and preference patterns
-- **Market Dynamics**: Supply/demand fluctuations and seasonal trends
+#### Training Data Generation
+- Synthetic Market Data: 1,000+ simulated sellers with varied pricing
+- Historical Negotiations: Past deal outcomes and pricing patterns
+- User Behavior Data: Budget constraints and preference patterns
+- Market Dynamics: Supply/demand fluctuations and seasonal trends
 
-#### **Performance Metrics**
+#### Performance Metrics
 ```python
 Key Performance Indicators (KPIs):
 1. Negotiation Success Rate: Target > 85%
@@ -242,53 +223,53 @@ Key Performance Indicators (KPIs):
 5. User Satisfaction: Target > 4.0/5.0
 ```
 
-#### **Statistical Analysis**
-- **A/B Testing**: RL Agent vs. Rule-based vs. Human negotiation
-- **T-Tests**: Statistical significance of performance improvements
-- **Regression Analysis**: Factors affecting negotiation success
-- **Time Series Analysis**: Performance trends over time
+#### Statistical Analysis
+- A/B Testing: RL Agent vs. Rule-based vs. Human negotiation
+- T-Tests: Statistical significance of performance improvements
+- Regression Analysis: Factors affecting negotiation success
+- Time Series Analysis: Performance trends over time
 
 ### 🔬 Validation Methods
 
-#### **Internal Validation**
-1. **Cross-Validation**: K-fold validation on training data
-2. **Holdout Testing**: 20% data reserved for final evaluation
-3. **Stress Testing**: Edge cases and extreme market conditions
-4. **Robustness Testing**: Performance under uncertainty
+#### Internal Validation
+1. Cross-Validation: K-fold validation on training data
+2. Holdout Testing: 20% data reserved for final evaluation
+3. Stress Testing: Edge cases and extreme market conditions
+4. Robustness Testing: Performance under uncertainty
 
-#### **External Validation**
-1. **Expert Review**: Domain expert evaluation of negotiation strategies
-2. **User Studies**: Real user interactions and feedback
-3. **Market Comparison**: Performance against industry benchmarks
-4. **Peer Review**: Academic conference presentations
+#### External Validation
+1. Expert Review: Domain expert evaluation of negotiation strategies
+2. User Studies: Real user interactions and feedback
+3. Market Comparison: Performance against industry benchmarks
+4. Peer Review: Academic conference presentations
 
 ### 🎯 Hypothesis Testing
 
-#### **Primary Hypothesis**
-**H₀**: RL-based negotiation achieves no significant cost savings compared to rule-based approaches
-**H₁**: RL-based negotiation achieves >8% cost savings with >85% success rate
+#### Primary Hypothesis
+H₀: RL-based negotiation achieves no significant cost savings compared to rule-based approaches
+H₁: RL-based negotiation achieves >8% cost savings with >85% success rate
 
-#### **Secondary Hypotheses**
-1. **Trust Integration**: Trust-aware decisions outperform price-only decisions
-2. **Coalition Formation**: Multi-seller coalitions improve market efficiency
-3. **Continuous Learning**: Online training improves performance over time
-4. **Market Dynamics**: System adapts to changing market conditions
+#### Secondary Hypotheses
+1. Trust Integration: Trust-aware decisions outperform price-only decisions
+2. Coalition Formation: Multi-seller coalitions improve market efficiency
+3. Continuous Learning: Online training improves performance over time
+4. Market Dynamics: System adapts to changing market conditions
 
 ### 📈 Success Criteria
 
-#### **Technical Success**
+#### Technical Success
 - ✅ Model convergence with stable Q-values
 - ✅ Real-time response < 5 seconds
 - ✅ 99.9% system uptime
 - ✅ Scalable to 100+ concurrent negotiations
 
-#### **Business Success**
+#### Business Success
 - ✅ 8-15% cost savings achieved
 - ✅ >85% negotiation success rate
 - ✅ Positive user feedback (>4.0/5.0)
 - ✅ Trust score improvements >10%
 
-#### **Research Success**
+#### Research Success
 - ✅ Statistically significant results (p < 0.05)
 - ✅ Publication-worthy findings
 - ✅ Replicable methodology
@@ -310,29 +291,29 @@ Learning Loop:
 
 ### 📝 Ethical Considerations
 
-#### **Fair Market Practices**
-- **Price Transparency**: All pricing data visible and auditable
-- **Anti-Collusion**: Prevents seller coordination
-- **Fair Competition**: Equal opportunity for all sellers
-- **Consumer Protection**: Prevents exploitation
+#### Fair Market Practices
+- Price Transparency: All pricing data visible and auditable
+- Anti-Collusion: Prevents seller coordination
+- Fair Competition: Equal opportunity for all sellers
+- Consumer Protection: Prevents exploitation
 
-#### **Data Privacy**
-- **User Anonymization**: Personal data protected
-- **Secure Storage**: Encrypted data at rest
-- **Access Control**: Role-based permissions
-- **Audit Trail**: Complete action logging
+#### Data Privacy
+- User Anonymization: Personal data protected
+- Secure Storage: Encrypted data at rest
+- Access Control: Role-based permissions
+- Audit Trail: Complete action logging
 
----
+
 
 ## 🎯 What Does This Do? (In 3 Sentences)
 
-1. **You tell the robot:** "I need 100 Biscuits, I have $1000"
-2. **The robot shops for you:** Talks to sellers, negotiates prices, finds best deals
-3. **You get the best deal:** Robot saves you money and time automatically!
+1. You tell the robot:** "I need 100 Biscuits, I have $1000"
+2. The robot shops for you:** Talks to sellers, negotiates prices, finds best deals
+3. You get the best deal:** Robot saves you money and time automatically!
 
 That's it! 🎉
 
----
+
 
 ## 🎬 How It Works (Simple Story)
 
@@ -340,7 +321,7 @@ That's it! 🎉
 
 You're a business owner. You need to buy 120 Biscuits for your store.
 
-**The old way (manual):**
+**The old way (manual):
 ```
 Day 1: Call 10 suppliers
 Day 2: Negotiate prices
@@ -350,14 +331,14 @@ Day 5: Finally get your Biscuits (maybe)
 
 Time wasted: 5 DAYS! 😫
 Money wasted: Probably overpaid 💸
-```
+
 
 ### Act 2: The Solution 🦸‍♂️
 
 **The new way (with AI Robot):**
 ```
 You: "I need 120 Biscuits, budget $1200"
-Robot: *works for 5 seconds*
+Robot: works for 5 seconds
 Robot: "Done! Got 120 Biscuits for $1050. Saved you $150!"
 
 Time taken: 5 SECONDS! ⚡
@@ -366,7 +347,7 @@ Money saved: $150! 💰
 
 ### Act 3: The Magic 🪄
 
-**How does the robot get so smart?**
+How does the robot get so smart?
 
 Think of it like training a puppy:
 - Puppy tries something → Gets treat if good, no treat if bad
@@ -383,9 +364,9 @@ This is called **"Reinforcement Learning"** (fancy name for learning from experi
 ## 🧩 What's Inside? (The Parts)
 
 ### 🤖 The Smart Robot (Buyer Agent)
-**What it does:** Shops for you automatically
-**How it learns:** Like a student studying for exams - tries, fails, learns, improves
-**Brain:** Neural network (fancy computer brain)
+What it does: Shops for you automatically
+How it learns: Like a student studying for exams - tries, fails, learns, improves
+Brain: Neural network (fancy computer brain)
 
 ```
 Robot's Thoughts:
@@ -396,35 +377,35 @@ Robot's Thoughts:
 ```
 
 ### 🏪 The Sellers (Seller Agents)
-**What they do:** Sell products at different prices
-**How they work:** Follow simple rules (not learning)
-**Personality:** Some are cheap, some expensive, some trustworthy, some sketchy
+What they do:Sell products at different prices
+How they work:Follow simple rules (not learning)
+Personality: Some are cheap, some expensive, some trustworthy, some sketchy
 
 ### 🤝 The Coalition Helper
-**What it does:** Combines multiple sellers when one isn't enough
-**Example:** 
+What it does: Combines multiple sellers when one isn't enough
+Example: 
 - You need 120 Biscuits
 - Seller A has 50
 - Seller B has 70
 - Coalition Helper: "Buy from both!"
 
 ### 👮 The Fairness Police
-**What it does:** Makes sure nobody cheats
-**Rules:**
+What it does: Makes sure nobody cheats
+Rules:
 - Sellers can't charge 10x the normal price
 - Deals must be fair to everyone
 - No scams allowed!
 
 ### ⭐ The Trust Tracker
-**What it does:** Remembers which sellers are reliable
-**How:**
+What it does: Remembers which sellers are reliable
+How:
 - Good seller delivers on time → Trust goes UP ⬆️
 - Bad seller is late/missing items → Trust goes DOWN ⬇️
 - Robot prefers high-trust sellers
 
 ### 🌐 The Web App (NEW!)
-**What it does:** Beautiful website to use the robot
-**Features:**
+What it does: Beautiful website to use the robot
+Features:
 - Click buttons instead of typing code
 - See negotiations happen in real-time
 - Test "what if" scenarios
@@ -436,38 +417,36 @@ Robot's Thoughts:
 
 ### Option 1: Use the Website (EASIEST!) 🌐
 
-**Step 1:** Start the backend
+Step 1: Start the backend
 ```bash
 cd web_app/backend
 python app.py
 ```
 
-**Step 2:** Start the frontend
+Step 2: Start the frontend
 ```bash
 cd web_app/frontend
 npm start
 ```
 
-**Step 3:** Open browser
+Step 3:Open browser
 ```
 Go to: http://localhost:3000
 Login: buyer@demo.com / demo123
 ```
 
-**Step 4:** Shop!
+Step 4:Shop!
 - Click "Create Request"
 - Enter: "100 Biscuits, $1000 budget"
 - Click "Start Negotiation"
 - Watch the robot work!
 - Approve the deal
 
-**That's it!** No coding needed! 🎉
 
----
 
 ### Option 2: Train Your Own Robot 🎓
 
-**Make the robot smarter:**
+Make the robot smarter:
 ```bash
 python train.py
 ```
@@ -487,7 +466,7 @@ What happens:
 
 ### Option 3: Test & Compare 📊
 
-**See how good the robot is:**
+See how good the robot is:
 ```bash
 python evaluate.py
 ```
@@ -498,15 +477,15 @@ Compares:
 - Who saves more money?
 - Who is faster?
 
-**Spoiler:** Smart Robot wins! 🏆
+Spoiler:Smart Robot wins! 🏆
 
 ---
 
 ## 🎮 Cool Features You Can Try
 
 ### 1. 🔮 What-If Simulator
-**Question:** "What if I only have $800 instead of $1000?"
-**Answer:** Robot shows you:
+Question:"What if I only have $800 instead of $1000?"
+Answer:Robot shows you:
 - Will it work? (Yes/No)
 - How much will it cost? ($720-$760)
 - Which sellers to use? (ABC Supplies + XYZ Traders)
@@ -520,32 +499,32 @@ Compares:
 **Watch 3 robots compete for the same products!**
 
 Robots:
-- 🔴 **Aggressive Robot**: Takes risks, tries bold moves
-- 🔵 **Conservative Robot**: Plays safe, reliable
-- 🟢 **Balanced Robot**: Middle ground
+- 🔴 Aggressive Robot: Takes risks, tries bold moves
+- 🔵 Conservative Robot: Plays safe, reliable
+- 🟢 Balanced Robot: Middle ground
 
-**Who wins?** Run it and find out!
+Who wins? Run it and find out!
 
-**Use it:** Click "Show Multi-Agent Competition" on the website
+Use it:Click "Show Multi-Agent Competition" on the website
 
 ---
 
 ### 3. 📚 Online Learning
-**Robot gets smarter WHILE you use it!**
+Robot gets smarter WHILE you use it!
 
 Every negotiation:
 - Robot learns what worked
 - Robot learns what didn't work
 - Robot improves for next time
 
-**Enable it:** Set `ENABLE_TRAINING=true` in `.env` file
+Enable it:Set `ENABLE_TRAINING=true` in `.env` file
 
 ---
 
 ### 4. 📊 Performance Analytics Dashboard
-**Track model performance with real metrics!**
+Track model performance with real metrics!
 
-**Features:**
+Features:
 - Success Rate Trends
 - Reward Progression Charts
 - Training Loss Curves
@@ -553,14 +532,14 @@ Every negotiation:
 - Recent Negotiation History
 - Time Range Filtering (24h/7d/30d/All)
 
-**Use it:** Click "Performance Analytics" in Analysis Tools
+Use it: Click "Performance Analytics" in Analysis Tools
 
 ---
 
 ### 5. 🏆 Seller Competition Analysis
-**Real competitive dynamics from your data!**
+Real competitive dynamics from your data!
 
-**What it shows:**
+What it shows:
 - Seller Performance Leaderboard
 - Market Share Analysis
 - Win Rate Comparisons
@@ -568,12 +547,12 @@ Every negotiation:
 - Revenue Rankings
 - Competitive Insights
 
-**Use it:** Click "Multi-Agent Competition" in Analysis Tools
+Use it:Click "Multi-Agent Competition" in Analysis Tools
 
 ---
 
 ### 6. 📊 Real-Time Visualization
-**See the negotiation happen live!**
+See the negotiation happen live!
 
 Watch:
 - Round 1: Robot offers $9/unit
@@ -587,31 +566,31 @@ Watch:
 
 ## 🎓 Why Is This Special? (For Professors/Researchers)
 
-### 1. **Multi-Agent Competition** ⭐⭐⭐⭐⭐
+ 1. Multi-Agent Competition ⭐⭐⭐⭐⭐
 Most AI projects show 1 robot. We show 3 robots COMPETING!
 - Demonstrates game theory
 - Shows emergent behavior
 - Proves Nash equilibrium
 
-### 2. **Trust-Aware Decisions** ⭐⭐⭐⭐
+ 2. Trust-Aware Decisions ⭐⭐⭐⭐
 Robot doesn't just look at price - it considers:
 - Is this seller reliable?
 - Have they delivered before?
 - Are they trustworthy?
 
-### 3. **Coalition Formation** ⭐⭐⭐⭐
+3. Coalition Formation ⭐⭐⭐⭐
 When no single seller has enough:
 - Robot combines multiple sellers
 - Optimizes for price + trust
 - Ensures fair distribution
 
-### 4. **Explainable AI** ⭐⭐⭐⭐⭐
+ 4. Explainable AI⭐⭐⭐⭐⭐
 Robot explains its decisions:
 - "I chose Seller B because: good price + high trust"
 - "I formed coalition because: no single seller had enough"
 - "Success probability: 85% based on past experience"
 
-### 5. **Continuous Learning** ⭐⭐⭐⭐
+ 5. Continuous Learning ⭐⭐⭐⭐
 Robot improves WHILE being used:
 - Not just pre-trained
 
@@ -678,14 +657,14 @@ Robot improves WHILE being used:
 
 **Scenario:** You run a bakery, need 200 bags of flour
 
-**Manual way:**
+Manual way:
 - Call 10 suppliers
 - Negotiate prices
 - Check reliability
 - Combine orders
 - Time: 2 days
 
-**With Robot:**
+With Robot:
 - Enter: "200 bags flour, $2000 budget"
 - Robot works: 10 seconds
 - Result: "Got 200 bags for $1850, saved $150!"
@@ -694,14 +673,14 @@ Robot improves WHILE being used:
 
 ### Example 2: Restaurant Chain 🍔
 
-**Scenario:** Need ingredients for 50 locations
+Scenario: Need ingredients for 50 locations
 
-**Challenge:** 
+Challenge: 
 - Different quantities per location
 - Different budgets
 - Need reliable suppliers
 
-**Solution:**
+Solution:
 - Run robot 50 times (one per location)
 - Robot optimizes each order
 - Learns which suppliers are best
@@ -713,13 +692,13 @@ Robot improves WHILE being used:
 
 **Scenario:** Study how AI learns to negotiate
 
-**What you can research:**
+What you can research:
 - How does robot improve over time?
 - What strategies does it discover?
 - How does competition affect behavior?
 - Can robots cooperate AND compete?
 
-**Tools provided:**
+Tools provided:
 - Training scripts
 - Evaluation metrics
 - Visualization tools
@@ -757,22 +736,22 @@ epsilon = 0.1          # How much robot explores? (0.05-0.3)
 
 ### After Training:
 
-**Episode 1-100:** "I'm confused" 😵
+Episode 1-100: "I'm confused" 😵
 - Success rate: 30%
 - Lots of failures
 - Random decisions
 
-**Episode 100-500:** "I'm learning!" 💡
+Episode 100-500: "I'm learning!" 💡
 - Success rate: 60%
 - Some good deals
 - Better strategies
 
-**Episode 500-1000:** "I'm an expert!" 🎓
+Episode 500-1000: "I'm an expert!" 🎓
 - Success rate: 85%
 - Consistently good deals
 - Smart coalitions
 
-**Savings:** Average 8-12% compared to manual negotiation
+Savings: Average 8-12% compared to manual negotiation
 
 ---
 
